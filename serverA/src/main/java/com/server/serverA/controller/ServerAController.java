@@ -1,17 +1,18 @@
 package com.server.serverA.controller;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class ServerAController {
 
+	@Value("${server.port}")
+	private int serverPort;
+
 	@GetMapping( "/calc" )
 	public String getCalc() {
-
-		int d = (int) (Math.random() * 100);
-
-		return "Server A - numero gerado " + d;
+		return "Server A - porta " + serverPort;
 	}
 
 }
